@@ -1,7 +1,6 @@
 package com.moviebooking.exception;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -67,15 +66,16 @@ public class GlobalExceptionHandlerTest {
 
 	@Test
 	public void testHandleNullValueException() {
-		LocalValidatorFactoryBean validator = new LocalValidatorFactoryBean();
-		validator.afterPropertiesSet();
-		User user = new User();
-		user.setContactNumber(null);
-		Set<ConstraintViolation<User>> result = validator.validate(user);
-		ConstraintViolationException exception = new ConstraintViolationException(result);
-		ResponseEntity<com.moviebooking.exception.AuthenticationException> response = globalExceptionHandler
-				.handleNullValueException(exception);
-		assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+		try (LocalValidatorFactoryBean validator = new LocalValidatorFactoryBean()) {
+			validator.afterPropertiesSet();
+			User user = new User();
+			user.setContactNumber(null);
+			Set<ConstraintViolation<User>> result = validator.validate(user);
+			ConstraintViolationException exception = new ConstraintViolationException(result);
+			ResponseEntity<com.moviebooking.exception.AuthenticationException> response = globalExceptionHandler
+					.handleNullValueException(exception);
+			assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+		}
 	}
 
 	@Test

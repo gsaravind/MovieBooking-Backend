@@ -7,7 +7,6 @@ public class MovieIdentityTest {
 
 	@Test
 	public void testGettersAndSetters() {
-		MovieIdentity m = new MovieIdentity();
 		// Arrange
 		String movieName = "The Matrix";
 		String theatreName = "Cineplex";

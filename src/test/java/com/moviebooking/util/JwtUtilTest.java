@@ -6,9 +6,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -25,7 +23,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.UnsupportedJwtException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -89,9 +86,6 @@ public class JwtUtilTest {
 	public void testIllegalArgumentException() {
 		Collection<GrantedAuthority> authorities = Collections.emptyList();
 		UserDetails userDetails = new User("testuser", "password", authorities);
-		String token = Jwts.builder().setSubject("testuser")
-				.setExpiration(new Date(System.currentTimeMillis() + JwtUtil.TOKEN_VALIDITY * 1000))
-				.signWith(SignatureAlgorithm.HS512, JwtUtil.SECRET_KEY).compact();
 		HttpServletRequest request = mock(HttpServletRequest.class);
 		HttpServletResponse response = mock(HttpServletResponse.class);
 		jwtUtil.validateToken("", userDetails, request, response);

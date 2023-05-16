@@ -11,7 +11,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.moviebooking.exception.CustomException;
-import com.moviebooking.model.JwtRequest;
 import com.moviebooking.model.Role;
 import com.moviebooking.model.User;
 import com.moviebooking.repository.RoleRepository;
