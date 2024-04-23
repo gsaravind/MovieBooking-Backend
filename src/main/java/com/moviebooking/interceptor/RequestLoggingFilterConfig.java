@@ -1,4 +1,4 @@
-package com.moviebooking.interceptor;
+/*package com.moviebooking.interceptor;
 
 import org.apache.commons.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import org.zalando.logbook.core.StreamHttpLogWriter;
 @Configuration
 public class RequestLoggingFilterConfig {
 
-    /*
+    
      * @Bean
      * public CommonsRequestLoggingFilter commonRequestLoggingFilter() {
      * CommonsRequestLoggingFilter filter = new CommonsRequestLoggingFilter();
@@ -22,18 +22,18 @@ public class RequestLoggingFilterConfig {
      * filter.setAfterMessagePrefix("REQUEST DATA : ");
      * return filter;
      * }
-     */
+     
 
 	@Autowired
 	private CustomSink customSink;
 	
     @Bean
     public Logbook logbook() {
-		/*Logbook logbook = Logbook.builder()
+		Logbook logbook = Logbook.builder()
 		        .sink(new DefaultSink(
 		                new DefaultHttpLogFormatter(),
 		                new StreamHttpLogWriter(System.err)))
-		        .build();*/
+		        .build();
     	Logbook logbook = Logbook.builder()
     			.sink(customSink)
     			.build();
@@ -41,3 +41,4 @@ public class RequestLoggingFilterConfig {
     }
 
 }
+*/

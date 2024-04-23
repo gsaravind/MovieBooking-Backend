@@ -1,4 +1,4 @@
-package com.moviebooking.interceptor;
+/*package com.moviebooking.interceptor;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -13,3 +13,4 @@ public class KafkaProducer {
     }
 
 }
+*/
